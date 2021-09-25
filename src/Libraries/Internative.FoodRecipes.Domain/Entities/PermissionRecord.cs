@@ -12,7 +12,7 @@ namespace Internative.FoodRecipes.Domain.Entities
         /// <summary>
         /// Gets or sets the permission name
         /// </summary>
-        public string Name { get; set; }
+        public string PermissionName { get; set; }
 
         /// <summary>
         /// Gets or sets the permission system name

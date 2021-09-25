@@ -30,13 +30,18 @@ namespace Internative.FoodRecipes.Domain.Entities
         public string TitleAttribute { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the picture is new
-        /// </summary>
-        public bool IsNew { get; set; }
-
-        /// <summary>
         /// Gets or sets the picture virtual path
         /// </summary>
         public string VirtualPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the picture binary
+        /// </summary>
+        public byte[] BinaryData { get; set; }
+
+        /// <summary>
+        /// Gets or sets the display order
+        /// </summary>
+        public int DisplayOrder { get; set; }
     }
 }

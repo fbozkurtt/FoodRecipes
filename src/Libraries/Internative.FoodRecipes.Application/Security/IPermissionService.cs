@@ -23,13 +23,6 @@ namespace Internative.FoodRecipes.Application.Security
         Task<IList<PermissionRecord>> GetAllPermissionRecordsAsync();
 
         /// <summary>
-        /// Inserts a permission
-        /// </summary>
-        /// <param name="permission">Permission</param>
-        /// <returns>A task that represents the asynchronous operation</returns>
-        Task InsertPermissionRecordAsync(PermissionRecord permission);
-
-        /// <summary>
         /// Gets a permission record by identifier
         /// </summary>
         /// <param name="permission">Permission</param>
@@ -37,7 +30,7 @@ namespace Internative.FoodRecipes.Application.Security
         /// A task that represents the asynchronous operation
         /// The task result contains a permission record
         /// </returns>
-        Task<PermissionRecord> GetPermissionRecordByIdAsync(int permissionId);
+        Task<PermissionRecord> GetPermissionRecordByIdAsync(string permissionId);
 
         /// <summary>
         /// Updates the permission
@@ -45,13 +38,6 @@ namespace Internative.FoodRecipes.Application.Security
         /// <param name="permission">Permission</param>
         /// <returns>A task that represents the asynchronous operation</returns>
         Task UpdatePermissionRecordAsync(PermissionRecord permission);
-
-        /// <summary>
-        /// Deletes the permission
-        /// </summary>
-        /// <param name="permission">Permission</param>
-        /// <returns>A task that represents the asynchronous operation</returns>
-        Task DeletePermissionRecordAsync(PermissionRecord permission);
 
         /// <summary>
         /// Install permissions
@@ -79,7 +65,7 @@ namespace Internative.FoodRecipes.Application.Security
         /// A task that represents the asynchronous operation
         /// The task result contains the rue - authorized; otherwise, false
         /// </returns>
-        Task<bool> AuthorizeAsync(PermissionRecord permission, IdentityUser user);
+        Task<bool> AuthorizeAsync(PermissionRecord permission, IdentityUser<int> user);
 
         /// <summary>
         /// Authorize permission
@@ -100,7 +86,7 @@ namespace Internative.FoodRecipes.Application.Security
         /// A task that represents the asynchronous operation
         /// The task result contains the rue - authorized; otherwise, false
         /// </returns>
-        Task<bool> AuthorizeAsync(string permissionRecordSystemName, IdentityUser user);
+        Task<bool> AuthorizeAsync(string permissionRecordSystemName, IdentityUser<int> user);
 
         /// <summary>
         /// Authorize permission
@@ -111,14 +97,14 @@ namespace Internative.FoodRecipes.Application.Security
         /// A task that represents the asynchronous operation
         /// The task result contains the rue - authorized; otherwise, false
         /// </returns>
-        Task<bool> AuthorizeAsync(string permissionRecordSystemName, int customerRoleId);
+        Task<bool> AuthorizeAsync(string permissionRecordSystemName, int identityRoleId);
 
         /// <summary>
         /// Gets a permission record-customer role mapping
         /// </summary>
         /// <param name="permissionId">Permission identifier</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task<IList<PermissionRecordIdentityRoleMapping>> GetMappingByPermissionRecordIdAsync(int permissionId);
+        Task<IList<PermissionRecordIdentityRoleMapping>> GetMappingByPermissionRecordIdAsync(string permissionId);
 
         /// <summary>
         /// Delete a permission record-customer role mapping
@@ -126,13 +112,13 @@ namespace Internative.FoodRecipes.Application.Security
         /// <param name="permissionId">Permission identifier</param>
         /// <param name="customerRoleId">Customer role identifier</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task DeletePermissionRecordCustomerRoleMappingAsync(int permissionId, int customerRoleId);
+        Task DeletePermissionRecordIdentityRoleMappingAsync(string permissionId, int identityRoleId);
 
         /// <summary>
         /// Inserts a permission record-customer role mapping
         /// </summary>
         /// <param name="permissionRecordCustomerRoleMapping">Permission record-customer role mapping</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task InsertPermissionRecordCustomerRoleMappingAsync(PermissionRecordIdentityRoleMapping permissionRecordCustomerRoleMapping);
+        Task InsertPermissionRecordIdentityRoleMappingAsync(PermissionRecordIdentityRoleMapping permissionRecordIdentityRoleMapping);
     }
 }

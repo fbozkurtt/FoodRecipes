@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Internative.FoodRecipes.Infrastructure.Identity
 {
-    public partial class ApplicationUser : IdentityUser
+    public partial class ApplicationUser : IdentityUser<int>
     {
     }
 }

@@ -12,7 +12,7 @@ namespace Internative.FoodRecipes.Domain.Entities
         /// <summary>
         /// Gets or sets the permission record identifier
         /// </summary>
-        public int PermissionRecordId { get; set; }
+        public string PermissionRecordId { get; set; }
 
         /// <summary>
         /// Gets or sets the customer role identifier

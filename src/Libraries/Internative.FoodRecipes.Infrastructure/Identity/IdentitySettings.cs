@@ -9,7 +9,7 @@ namespace Internative.FoodRecipes.Infrastructure.Identity
 {
     public class IdentitySettings
     {
-        public PasswordOptions GetPasswordOptions()
+        public static PasswordOptions GetPasswordOptions()
         {
             return new PasswordOptions()
             {
@@ -22,12 +22,13 @@ namespace Internative.FoodRecipes.Infrastructure.Identity
             };
         }
 
-        public static IList<IdentityRole<Guid>> GetDefaultRoles()
+        public static IList<IdentityRole<int>> GetDefaultRoles()
         {
-            var roles = new List<IdentityRole<Guid>>()
+            var roles = new List<IdentityRole<int>>()
             {
-                { new IdentityRole<Guid>(DefaultRoleNames.Admin) },
-                { new IdentityRole<Guid>(DefaultRoleNames.User) },
+                { new IdentityRole<int>(RoleNames.Admin) },
+                { new IdentityRole<int>(RoleNames.Moderator) },
+                { new IdentityRole<int>(RoleNames.User) },
             };
             return roles;
         }
