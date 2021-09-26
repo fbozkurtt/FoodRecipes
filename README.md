@@ -3,7 +3,7 @@
 * ASP.NET CORE 5.0
 * ASP.NET CORE IDENTITY for identity user and roles
 * JWT Bearer
-* Role based authorization and permission assigned to spesific roles
+* Role based authorization and permission assigned to specific roles
 * Automapper
 * MongoDB for storing recipes
 * Repository pattern for accessing data
