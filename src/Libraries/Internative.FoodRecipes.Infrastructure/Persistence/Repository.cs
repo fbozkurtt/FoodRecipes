@@ -34,14 +34,16 @@ namespace Internative.FoodRecipes.Infrastructure.Persistence
 
             foreach (var property in settings.GetType().GetProperties())
             {
-                if (property.PropertyType.Name.Contains(nameof(TEntity)))
+                var propertyName = property.Name;
+                var entityName = typeof(TEntity).Name;
+                if (propertyName.Contains(entityName))
                 {
                     CollectionName = property.GetValue(settings).ToString();
                     break;
                 }
             }
 
-            _db = database.GetCollection<TEntity>(CollectionName); ;
+            _db = database.GetCollection<TEntity>(CollectionName);
         }
 
         #endregion
@@ -64,7 +66,7 @@ namespace Internative.FoodRecipes.Infrastructure.Persistence
                 var query = Collection;
                 query = func != null ? func(query) : query;
 
-                return await query.ToListAsync();
+                return query.ToList();
             }
 
             return await GetEntitiesAsync(getAllAsync);
@@ -77,7 +79,7 @@ namespace Internative.FoodRecipes.Infrastructure.Persistence
                 var query = Collection;
                 query = func != null ? await func(query) : query;
 
-                return await query.ToListAsync();
+                return query.ToList();
             }
 
             return await GetEntitiesAsync(getAllAsync);
@@ -108,6 +110,8 @@ namespace Internative.FoodRecipes.Infrastructure.Persistence
 
         public async Task InsertAsync(TEntity entity, bool publishEvent = true)
         {
+            entity.Created = DateTime.Now;
+            entity.CreatedBy = _currentUserService.UserId;
             await _db.InsertOneAsync(entity);
 
             //if (publishEvent)

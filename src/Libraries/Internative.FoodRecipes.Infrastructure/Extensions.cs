@@ -18,12 +18,12 @@ namespace Internative.FoodRecipes.Infrastructure
             //min allowed page size is 1
             pageSize = Math.Max(pageSize, 1);
 
-            var count = await source.CountAsync();
+            var count = source.Count();
 
             var data = new List<T>();
 
             if (!getOnlyTotalCount)
-                data.AddRange(await source.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync());
+                data.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
 
             return new PagedList<T>(data, pageIndex, pageSize, count);
         }

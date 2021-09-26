@@ -24,9 +24,7 @@ namespace Internative.FoodRecipes.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpContextAccessor();
-            services.AddInfrastructure(Configuration);
-            services.AddControllersWithViews();
+            services.AddWeb(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,16 +49,22 @@ namespace Internative.FoodRecipes.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "recipe",
+                //    pattern: "{controller=Recipes}/{action=Index}/{id?}");
+
+                endpoints.MapControllers();
             });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                   name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
                 );
             });
         }

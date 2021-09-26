@@ -17,11 +17,22 @@ namespace Internative.FoodRecipes.Domain.Common
         [BsonElement("Name")]
         public string Name { get; set; }
 
+
+        [BsonElement("created")]
         public DateTime Created { get; set; }
+
+
+        [BsonElement("createdBy")]
 
         public int? CreatedBy { get; set; }
 
+
+        [BsonElement("lastModified")]
+
         public DateTime? LastModified { get; set; }
+
+
+        [BsonElement("lastModifiedBy")]
 
         public int? LastModifiedBy { get; set; }
     }

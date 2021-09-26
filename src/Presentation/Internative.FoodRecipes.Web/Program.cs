@@ -1,10 +1,15 @@
+using Internative.FoodRecipes.Application.Common.Interfaces;
+using Internative.FoodRecipes.Application.Security;
+using Internative.FoodRecipes.Domain.Entities;
 using Internative.FoodRecipes.Infrastructure.Persistence;
+using Internative.FoodRecipes.Infrastructure.Security;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -44,12 +49,32 @@ namespace Internative.FoodRecipes.Web
 
                         await context.Database.MigrateAsync();
 
-                        Log.Information("Awaiting migrations applied to the database.");
+                        Log.Information("Awaiting migrations applied to the identity database (MSSQL SERVER).");
                     }
 
                     catch (Exception ex)
                     {
-                        Log.Error(ex, "An error occurred while migrating the database.");
+                        Log.Error(ex, "An error occurred while migrating the identity database.");
+                    }
+
+                    try
+                    {
+                        var permissionService = services.GetRequiredService<IPermissionService>();
+                        var permissionProvider = services.GetRequiredService<IPermissionProvider>();
+
+                        var recipeRepository = services.GetRequiredService<IRepository<Recipe>>();
+
+                        await permissionService.InstallPermissionsAsync(permissionProvider);
+
+                        await SeedDatabase.SeedSampleDataAsync(recipeRepository);
+
+
+                        Log.Information("Database (MongoDB) seeded with default values.");
+                    }
+
+                    catch(Exception ex)
+                    {
+                        Log.Error(ex, "An error occured while updating the database.");
                     }
                 }
 

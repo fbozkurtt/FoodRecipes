@@ -16,7 +16,7 @@ namespace Internative.FoodRecipes.Infrastructure.Security
     {
         #region Fields
 
-        private readonly UserManager<IdentityUser<int>> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly IIdentityService _identityService;
         private readonly ICurrentUserService _currentUserService;
@@ -28,7 +28,7 @@ namespace Internative.FoodRecipes.Infrastructure.Security
         #region Ctor
 
         public PermissionService(
-            UserManager<IdentityUser<int>> userManager, 
+            UserManager<ApplicationUser> userManager, 
             RoleManager<IdentityRole<int>> roleManager,
             IIdentityService identityService,
             ICurrentUserService currentUserService,
@@ -88,7 +88,7 @@ namespace Internative.FoodRecipes.Infrastructure.Security
 
         public async Task<bool> AuthorizeAsync(PermissionRecord permission)
         {
-            var currentUser = await _identityService.GetUserAsync(_currentUserService.UserId);
+            var currentUser = await _identityService.GetUserAsync(_currentUserService.UserId) as ApplicationUser;
             return await AuthorizeAsync(permission, currentUser);
         }
 
@@ -105,7 +105,7 @@ namespace Internative.FoodRecipes.Infrastructure.Security
 
         public async Task<bool> AuthorizeAsync(string permissionRecordSystemName)
         {
-            var currentUser = await _identityService.GetUserAsync(_currentUserService.UserId);
+            var currentUser = await _identityService.GetUserAsync(_currentUserService.UserId) as ApplicationUser;
             return await AuthorizeAsync(permissionRecordSystemName, currentUser);
         }
 
@@ -114,7 +114,7 @@ namespace Internative.FoodRecipes.Infrastructure.Security
             if (string.IsNullOrEmpty(permissionRecordSystemName))
                 return false;
 
-            var customerRoles = await _userManager.GetRolesAsync(user);
+            var customerRoles = await _userManager.GetRolesAsync(user as ApplicationUser);
             foreach (var roleName in customerRoles)
             {
                 var role = (await _roleManager.FindByNameAsync(roleName));

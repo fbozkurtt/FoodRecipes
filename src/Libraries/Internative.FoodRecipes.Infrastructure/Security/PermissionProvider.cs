@@ -13,11 +13,11 @@ namespace Internative.FoodRecipes.Infrastructure.Security
     {
         //admin area permissions
         public static readonly PermissionRecord AccessAdminPanel = new PermissionRecord { Name = "Access admin area", SystemName = "AccessAdminPanel", Category = "Standard" };
-        public static readonly PermissionRecord ManageRecipes = new PermissionRecord { Name = "Admin area. Manage recipes", SystemName = "ManageCategories", Category = "Catalog" };
-        public static readonly PermissionRecord ManageUsers = new PermissionRecord { Name = "Admin area. Manage recipes", SystemName = "ManageCategories", Category = "Catalog" };
+        public static readonly PermissionRecord ManageRecipes = new PermissionRecord { Name = "Admin area. Manage recipes", SystemName = "ManageRecipes", Category = "Recipe" };
+        public static readonly PermissionRecord ManageUsers = new PermissionRecord { Name = "Admin area. Manage users", SystemName = "ManageUsers", Category = "User" };
 
         //public permissions
-        public static readonly PermissionRecord DisplayRecipes = new PermissionRecord { Name = "Access admin area", SystemName = "AccessAdminPanel", Category = "Standard" };
+        public static readonly PermissionRecord DisplayRecipes = new PermissionRecord { Name = "Display recipes", SystemName = "DisplayRecipes", Category = "Recipe" };
 
         public virtual HashSet<(string systemRoleName, PermissionRecord[] permissions)> GetDefaultPermissions()
         {

@@ -1,7 +1,9 @@
 ﻿using Internative.FoodRecipes.Application.Common.Interfaces;
+using Internative.FoodRecipes.Application.Security;
 using Internative.FoodRecipes.Domain.Entities;
 using Internative.FoodRecipes.Infrastructure.Identity;
 using Internative.FoodRecipes.Infrastructure.Persistence;
+using Internative.FoodRecipes.Infrastructure.Security;
 using Internative.FoodRecipes.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
@@ -21,7 +24,8 @@ namespace Internative.FoodRecipes.Infrastructure
         {
             string migrationAssembly = typeof(IdentityDbContext).Assembly.FullName;
 
-            services.AddSingleton<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IRecipeService, RecipeService>();
 
             services.AddDbContext<IdentityDbContext>(options =>
                     options.UseSqlServer(
@@ -32,13 +36,13 @@ namespace Internative.FoodRecipes.Infrastructure
                 configuration.GetSection(nameof(FoodRecipesDatabaseSettings)));
 
             services.AddSingleton<IFoodRecipesDatabaseSettings>(sp =>
-                sp.GetRequiredService<FoodRecipesDatabaseSettings>());
+                sp.GetRequiredService<IOptions<FoodRecipesDatabaseSettings>>().Value);
 
-            services.AddSingleton<IRepository<Recipe>, Repository<Recipe>>();
-            services.AddSingleton<IRepository<PermissionRecordIdentityRoleMapping>, Repository<PermissionRecordIdentityRoleMapping>>();
-            services.AddSingleton<IRepository<Picture>, Repository<Picture>>();
-            services.AddSingleton<IRepository<PermissionRecord>, Repository<PermissionRecord>>();
-            services.AddSingleton<IRepository<UrlRecord>, Repository<UrlRecord>>();
+            services.AddScoped<IRepository<Recipe>, Repository<Recipe>>();
+            services.AddScoped<IRepository<PermissionRecordIdentityRoleMapping>, Repository<PermissionRecordIdentityRoleMapping>>();
+            services.AddScoped<IRepository<Picture>, Repository<Picture>>();
+            services.AddScoped<IRepository<PermissionRecord>, Repository<PermissionRecord>>();
+            services.AddScoped<IRepository<UrlRecord>, Repository<UrlRecord>>();
 
             services.AddIdentityCore<ApplicationUser>(options =>
             {
@@ -74,6 +78,8 @@ namespace Internative.FoodRecipes.Infrastructure
                     };
                 });
 
+            services.AddScoped<IPermissionProvider, PermissionProvider>();
+            services.AddScoped<IPermissionService, PermissionService>();
 
             services.AddAuthorization();
 
