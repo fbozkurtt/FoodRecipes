@@ -14,6 +14,8 @@
 * URL record service (SLUG) for seo optimizations
 * Admin area
 * Model factories
+* Serilog for logging and it sinks logs into files as well as into console
+* Entity Framework Core for IdentityDb (MSSQL SERVER EXPRESS) used for faster development
 
 ## What's missing?
 * UI is incomplete due to lack of my personal time
