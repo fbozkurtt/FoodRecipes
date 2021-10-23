@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  foodrecipes_web:
+    build: .
+    container_name: foodrecipes
+    ports:
+      - "80:80"
+    depends_on:
+      - foodrecipes_database
+
+  foodrecipes_database:
+    image: "mongo"
+    container_name: foodrecipes_mongodb_server
+    restart: "always"
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "foodRecipes_db_password"
+      
+  redis:
+    image: "redis"
+    container_name: foodrecipes_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  foodrecipes_data:

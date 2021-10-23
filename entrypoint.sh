@@ -1,0 +1,1 @@
+exec dotnet Internative.FoodRecipes.Web.dll

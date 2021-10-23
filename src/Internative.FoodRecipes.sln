@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{9D0DCEC2-00A3-495D-8D64-FADF8C14AF23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Domain", "src\Libraries\Internative.FoodRecipes.Domain\Internative.FoodRecipes.Domain.csproj", "{5A5EDB45-40D3-4058-9108-F97F4EE4FEC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Domain", "Libraries\Internative.FoodRecipes.Domain\Internative.FoodRecipes.Domain.csproj", "{5A5EDB45-40D3-4058-9108-F97F4EE4FEC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Infrastructure", "src\Libraries\Internative.FoodRecipes.Infrastructure\Internative.FoodRecipes.Infrastructure.csproj", "{218F30FA-C833-4F19-AD32-D94B14363308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Infrastructure", "Libraries\Internative.FoodRecipes.Infrastructure\Internative.FoodRecipes.Infrastructure.csproj", "{218F30FA-C833-4F19-AD32-D94B14363308}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Application", "src\Libraries\Internative.FoodRecipes.Application\Internative.FoodRecipes.Application.csproj", "{7CA856D0-A02E-40BF-9099-9D6288002DAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internative.FoodRecipes.Application", "Libraries\Internative.FoodRecipes.Application\Internative.FoodRecipes.Application.csproj", "{7CA856D0-A02E-40BF-9099-9D6288002DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internative.FoodRecipes.Web", "src\Presentation\Internative.FoodRecipes.Web\Internative.FoodRecipes.Web.csproj", "{C0D229DF-25AB-46E2-B348-2FB9302AA5C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internative.FoodRecipes.Web", "Presentation\Internative.FoodRecipes.Web\Internative.FoodRecipes.Web.csproj", "{C0D229DF-25AB-46E2-B348-2FB9302AA5C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
