@@ -22,9 +22,7 @@
 * Some services lack of implementation cause of aforementioned problem
 * Redis or other caching technologies didn't used
 
-## The technologies I wanted to use. Will use them eventually.
+## Roadmap
 * Fluent Migration
 * Fluent Validation
 * Docker support (Containerization)
-
-### note to self: This project proves good example of my skills. Coould be useful for future works.
