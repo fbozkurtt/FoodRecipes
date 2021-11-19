@@ -8,7 +8,7 @@
 * MongoDB for storing recipes
 * Repository pattern for accessing data
 * Web framework is fully abstracted from database and it's database agnostic
-* Clean artitechture or as some people call as Oninon architecture is fully implemented
+* Clean artitechture
 * Pagination fully supported
 * Database will be seed with default values on startup
 * URL record service (SLUG) for seo optimizations
