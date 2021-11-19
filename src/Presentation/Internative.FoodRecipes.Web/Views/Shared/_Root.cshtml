@@ -1,9 +1,0 @@
-﻿@{
-    Layout = "_Root.Head";
-}
-@await Component.InvokeAsync("AdminHeaderLinks")
-@await Html.PartialAsync("_Header")
-<div>
-    @RenderBody()
-</div>
-@await Component.InvokeAsync("Footer")

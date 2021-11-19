@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.1" />
+        <PackageReference Include="WebMarkupMin.AspNetCore5" Version="2.9.2" />
+        <PackageReference Include="WebMarkupMin.NUglify" Version="2.9.2" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\Libraries\FoodRecipes.Core\FoodRecipes.Core.csproj" />
+      <ProjectReference Include="..\..\Libraries\FoodRecipes.Data\FoodRecipes.Data.csproj" />
+      <ProjectReference Include="..\..\Libraries\FoodRecipes.Services\FoodRecipes.Services.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Migrations" />
+    </ItemGroup>
+
+</Project>

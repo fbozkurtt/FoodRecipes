@@ -1,8 +1,0 @@
-﻿@model LoginModel
-
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<form asp-route="Login" method="post" autocomplete="off">
-    <input asp-for="Username" type="text" required />
-    <input asp-for="Password" type="password" required />
-    <button type="submit">Login</button>
-</form>
